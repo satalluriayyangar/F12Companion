@@ -176,15 +176,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun connect(device: android.bluetooth.BluetoothDevice) {
         lifecycleScope.launch {
-            manager.connect(device).collect { state ->
-                runOnUiThread {
-                    val connected = state is BleState.Connected
-                    binding.btnConnect.isEnabled = !connected
-                    binding.btnSendGolden.isEnabled = connected
-                    binding.btnSendWeather.isEnabled = connected
-                    binding.btnSendNotice.isEnabled = connected
-                }
-            }
+            manager.connect(device).collect { /* flow is informational; state updates handled by observeState */ }
         }
     }
 
@@ -329,6 +321,7 @@ class MainActivity : AppCompatActivity() {
     private fun observeState() {
         lifecycleScope.launch {
             manager.state.collect { state ->
+                val connected = state is BleState.Connected
                 binding.tvStatus.text = when (state) {
                     is BleState.Idle -> getString(R.string.status_idle)
                     is BleState.Scanning -> getString(R.string.status_scanning)
@@ -337,6 +330,10 @@ class MainActivity : AppCompatActivity() {
                     is BleState.Disconnected -> "Disconnected: ${state.reason ?: "unknown"}"
                     is BleState.Error -> "Error: ${state.message}"
                 }
+                binding.btnConnect.isEnabled = !connected
+                binding.btnSendGolden.isEnabled = connected
+                binding.btnSendWeather.isEnabled = connected
+                binding.btnSendNotice.isEnabled = connected
             }
         }
     }
