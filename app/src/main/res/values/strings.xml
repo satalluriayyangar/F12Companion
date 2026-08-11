@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">F12 Companion</string>
+    <string name="scan">Scan for F12</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="send_golden">Send Golden Packet</string>
+    <string name="status_idle">Idle</string>
+    <string name="status_scanning">Scanning…</string>
+    <string name="status_connecting">Connecting…</string>
+    <string name="status_connected">Connected</string>
+    <string name="status_disconnecting">Disconnecting…</string>
+    <string name="permission_rationale">Bluetooth and location permissions are required to scan for and connect to the F12 watch.</string>
+    <string name="tx">TX</string>
+    <string name="rx">RX</string>
+    <string name="no_logs">No log entries yet.</string>
+</resources>
