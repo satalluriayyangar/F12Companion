@@ -57,6 +57,9 @@ class F12BleManager(private val context: Context) {
 
     var onCallControlReceived: ((Int) -> Unit)? = null
     var onWatchFaceInfoReceived: ((Int, Int, Int, Int, Int) -> Unit)? = null
+    var onUnknownCommand: ((Int, ByteArray) -> Unit)? = null
+    var onNotificationReplyTriggered: ((String) -> Unit)? = null
+    var onVoiceReplyTriggered: (() -> Unit)? = null
 
     companion object {
         val GOLDEN_TX = byteArrayOf(
@@ -189,6 +192,8 @@ class F12BleManager(private val context: Context) {
                                     resetWatchFaceUpload()
                                 }
                             }
+                        } else {
+                            onUnknownCommand?.invoke(dataType, bytes)
                         }
                     }
                 }

@@ -119,14 +119,29 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="4dp" />
 
-        <TextView
-            android:id="@+id/tvVoiceDisclaimer"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Voice reply to SMS and call reject messages is not implemented in the VFit protocol source. This feature would require watch-initiated commands not present in the verified capture."
-            android:textSize="12sp"
-            android:textColor="?android:attr/textColorSecondary"
-            android:layout_marginBottom="12dp" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <Button
+                android:id="@+id/btnVoiceReply"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Voice Reply"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btnNotificationReply"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Reply to Notification"
+                android:layout_marginStart="4dp" />
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
